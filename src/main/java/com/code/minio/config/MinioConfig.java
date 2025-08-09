@@ -1,5 +1,6 @@
 package com.code.minio.config;
 
+import io.minio.MinioAsyncClient;
 import io.minio.MinioClient;
 import okhttp3.OkHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,16 @@ public class MinioConfig {
     @Bean
     public MinioClient minioClient() throws Exception {
         return MinioClient.builder()
+                .endpoint(minioProperties.getEndpoint())
+                .credentials(minioProperties.getUsername(), minioProperties.getPassword())
+                .httpClient(new OkHttpClient())
+                .build();
+    }
+
+
+    @Bean
+    public MinioAsyncClient minioAsyncClient() throws Exception {
+        return MinioAsyncClient.builder()
                 .endpoint(minioProperties.getEndpoint())
                 .credentials(minioProperties.getUsername(), minioProperties.getPassword())
                 .httpClient(new OkHttpClient())
