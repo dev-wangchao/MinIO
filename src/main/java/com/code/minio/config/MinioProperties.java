@@ -12,5 +12,7 @@ public class MinioProperties {
     private String endpoint;
     private String username;
     private String password;
+    private String defaultBucket;
+    private Integer presignedUrlExpiry;
 
 }

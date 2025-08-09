@@ -40,7 +40,7 @@ class MinioApplicationTests {
         List<Bucket> buckets = minioClient.listBuckets();
         buckets.forEach(b -> System.out.println(b.name()));
         System.out.println("--------------");
-        List<Bucket> bucketList = minioClient.listBuckets(ListBucketsArgs.builder().extraHeaders(Map.of("file", "file.txt")).build());
+        List<Bucket> bucketList = minioClient.listBuckets(ListBucketsArgs.builder().extraHeaders(Map.of("file", "mock.txt")).build());
         bucketList.forEach(b -> System.out.println(b.name()));
     }
 
@@ -53,15 +53,23 @@ class MinioApplicationTests {
 
     @Test
     void test5() throws  Exception{
-        InputStream inputStream = new FileInputStream("src/main/resources/file.txt");
+        InputStream inputStream = new FileInputStream("src/main/resources/mock.txt");
         minioClient.putObject(PutObjectArgs.builder()
-                .bucket("dev").object("file.txt").stream(inputStream, -1, 10485760).build());
+                .bucket("dev").object("mock.txt").stream(inputStream, -1, 10485760).build());
     }
 
 
     @Test
     void test6() throws  Exception{
-        InputStream inputStream = new FileInputStream("src/main/resources/file.txt");
-        minioClient.uploadObject(UploadObjectArgs.builder().bucket("dev").filename("src/main/resources/file.txt").build());
+        InputStream inputStream = new FileInputStream("src/main/resources/mock.txt");
+        minioClient.uploadObject(UploadObjectArgs.builder().bucket("dev").filename("src/main/resources/mock.txt").build());
+    }
+
+
+    @Test
+    void test7() throws  Exception{
+        String dev = minioClient.getPresignedObjectUrl(GetPresignedObjectUrlArgs.builder()
+                .bucket("dev").object("file.txt").build());
+        System.out.println(dev);
     }
 }

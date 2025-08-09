@@ -1,6 +1,7 @@
 package com.code.minio.config;
 
 import io.minio.MinioClient;
+import okhttp3.OkHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,10 +13,11 @@ public class MinioConfig {
     private MinioProperties minioProperties;
 
     @Bean
-    public MinioClient minioClient() {
+    public MinioClient minioClient() throws Exception {
         return MinioClient.builder()
                 .endpoint(minioProperties.getEndpoint())
                 .credentials(minioProperties.getUsername(), minioProperties.getPassword())
+                .httpClient(new OkHttpClient())
                 .build();
     }
 

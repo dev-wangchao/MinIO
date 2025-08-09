@@ -6,4 +6,12 @@ minio:
   endpoint: http://120.27.236.84:9000
   username: minioadmin
   password: minioadmin
+  defaultBucket: bucket
+  presignedUrlExpiry: 7
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
 
