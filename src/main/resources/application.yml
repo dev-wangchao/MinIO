@@ -18,10 +18,10 @@ spring:
   # Redis配置
   data:
     redis:
-      host: localhost
+      host: 120.27.236.84
       port: 6379
-      password: 
-      database: 0
+      password: 1qazXSW@3edc
+      database: 6
       timeout: 3000ms
       lettuce:
         pool:

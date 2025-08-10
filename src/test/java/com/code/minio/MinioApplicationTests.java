@@ -72,4 +72,12 @@ class MinioApplicationTests {
                 .bucket("dev").object("file.txt").build());
         System.out.println(dev);
     }
+
+
+    @Test
+    void test8() throws Exception{
+        //生成1GB的测试文件
+
+
+    }
 }

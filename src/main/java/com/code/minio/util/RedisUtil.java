@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import java.util.concurrent.TimeUnit;
+import java.util.Set;
+import java.util.HashSet;
 
 /**
  * Redis工具类
@@ -140,5 +142,19 @@ public class RedisUtil {
             throw new RuntimeException("递减因子必须大于0");
         }
         return redisTemplate.opsForValue().increment(key, -delta);
+    }
+
+    /**
+     * 查找匹配的键
+     * @param pattern 匹配模式
+     * @return 匹配的键集合
+     */
+    public Set<String> keys(String pattern) {
+        try {
+            return redisTemplate.keys(pattern);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new HashSet<>();
+        }
     }
 }

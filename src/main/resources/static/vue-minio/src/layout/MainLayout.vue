@@ -51,6 +51,7 @@
             </template>
             <el-menu-item index="/contracts">合同文件</el-menu-item>
             <el-menu-item index="/upload">文件上传</el-menu-item>
+            <el-menu-item index="/multipart-upload">分片上传</el-menu-item>
           </el-sub-menu>
         </el-menu>
       </el-aside>

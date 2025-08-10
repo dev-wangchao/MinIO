@@ -16,6 +16,10 @@ export default defineConfig({
         target: 'http://localhost:8080', // 后台API地址
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
+      },
+      '/minio': {
+        target: 'http://localhost:8080', // 后台API地址
+        changeOrigin: true
       }
     }
   }

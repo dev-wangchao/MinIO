@@ -54,6 +54,12 @@ const routes = [
         name: 'FileUpload',
         component: () => import('@/views/FileUpload.vue'),
         meta: { title: '文件上传' }
+      },
+      {
+        path: '/multipart-upload',
+        name: 'MultipartUpload',
+        component: () => import('@/views/MultipartUploadDemo.vue'),
+        meta: { title: '分片上传演示' }
       }
     ]
   }
